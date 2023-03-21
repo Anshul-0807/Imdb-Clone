@@ -1,5 +1,7 @@
 import React from 'react'
-import { AppBar, Toolbar, styled } from '@mui/material';
+import { AppBar, Toolbar, styled, Box } from '@mui/material';
+import { Menu} from '@mui/icons-material';
+
 import { logoURL } from '../../constants/constant';
 
 
@@ -20,6 +22,9 @@ const Header = () => {
     <AppBar>
         <StyledToolBar>
           <Logo src={logoURL} alt="logo" />
+          <Box>
+            <Menu/>
+          </Box>
         </StyledToolBar>
     </AppBar>
   )
