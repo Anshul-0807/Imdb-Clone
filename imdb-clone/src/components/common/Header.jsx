@@ -1,9 +1,13 @@
 import React from 'react'
+import {useState} from 'react';
 import { AppBar, Toolbar, styled, Box, Typography , InputBase} from '@mui/material';
 import { Menu, BookmarkAdd, ExpandMore} from '@mui/icons-material';
 
 import { logoURL } from '../../constants/constant';
 
+// component
+
+import HeaderMenu from './HeaderMenu';
 
 
 
@@ -47,16 +51,29 @@ const Logo = styled("img")({
 })
 
 const Header = () => {
+
+ const [open, setOpen] = useState(null);
+
+
+ const handleClick = (e) => {
+     setOpen(e.currentTarget)
+ }
+
+ const handleClose = () => {
+  setOpen(null);
+};
+
   return (
     <AppBar>
         <StyledToolBar>
           <Logo src={logoURL} alt="logo" />
-          <Box>
+          <Box  onClick={handleClick}>
             <Menu/>
             <Typography>
               Menu
             </Typography>
           </Box>
+          <HeaderMenu open={open} handleClose={handleClose}/>
           <InputSearchFeild/>
           <Typography>IMDb<Imdbpro component="span">Pro</Imdbpro></Typography>
           <Box>
