@@ -25,7 +25,7 @@ const Home = () => {
     <>
       <Header/>
       <Box>
-        <Banner/>
+        <Banner movies={movies}/>
       </Box>
     </>
   )
