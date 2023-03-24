@@ -4,9 +4,18 @@ import { useEffect, useState } from 'react'
 import Header from '../components/common/Header'
 import { categoryMovies } from '../services/api'
 import { NOWPLAYING_API_URL } from '../constants/constant'
-import { Box } from '@mui/material'
+import { Box, styled } from '@mui/material'
 import Banner from '../components/Banner'
+import UpNext from '../components/UpNext';
 
+const Wrapper = styled(Box)`
+display: flex;
+padding: 20px 0;
+`;
+
+const Component = styled(Box)`
+padding: 0 115px;
+`;
 
 const Home = () => {
 
@@ -24,9 +33,12 @@ const Home = () => {
   return (
     <>
       <Header/>
-      <Box>
-        <Banner movies={movies}/>
-      </Box>
+       <Component>
+        <Wrapper>
+          <Banner movies={movies}/>
+          <UpNext movies={movies}/>
+        </Wrapper>
+       </Component>
     </>
   )
 }
