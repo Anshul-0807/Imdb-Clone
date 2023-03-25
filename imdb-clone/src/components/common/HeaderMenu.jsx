@@ -1,26 +1,31 @@
 import React from "react";
-import {Menu, MenuItem } from '@mui/material';
-
-const HeaderMenu = ({open, handleClose}) => {
-   
-    const openMenu = Boolean(open);
+import { Menu, MenuItem } from "@mui/material";
+import { Link } from "react-router-dom";
+import { routhPath } from "../../constants/route";
 
 
+const HeaderMenu = ({ open, handleClose }) => {
+  const openMenu = Boolean(open);
 
   return (
     <Menu
       id="basic-menu"
       anchorEl={open}
-      
       open={openMenu}
       onClose={handleClose}
       MenuListProps={{
         "aria-labelledby": "basic-button",
       }}
     >
-      <MenuItem onClick={handleClose}>Popular</MenuItem>
-      <MenuItem onClick={handleClose}>Top Rated</MenuItem>
-      <MenuItem onClick={handleClose}>Upcoming</MenuItem>
+      <Link to = {`${routhPath.categories}?category=popular`}>
+        <MenuItem onClick={handleClose}>Popular</MenuItem>
+      </Link>
+      <Link to = {`${routhPath.categories}?category=toprated`}>
+        <MenuItem onClick={handleClose}>Top Rated</MenuItem>
+      </Link>
+      <Link to = {`${routhPath.categories}?category=upcoming`}>
+        <MenuItem onClick={handleClose}>Upcoming</MenuItem>
+      </Link>
     </Menu>
   );
 };
