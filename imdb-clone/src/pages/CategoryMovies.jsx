@@ -2,13 +2,17 @@ import { Box } from "@mui/material";
 import React from "react";
 import Header from "../components/common/Header";
 import {useState, useEffect} from 'react';
+import { categoryMovies } from "../services/api";
 
 
 const CategoryMovies = () => {
+ 
+ const [movies, setMovies] = useState([])
 
  useEffect(() => {
   const getData = async () => {
-    await 
+    let response = await categoryMovies(API_URL)
+    setMovies(response.results);
   }
   getData()
  }, [third])
