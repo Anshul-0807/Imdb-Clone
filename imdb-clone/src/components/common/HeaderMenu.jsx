@@ -17,13 +17,13 @@ const HeaderMenu = ({ open, handleClose }) => {
         "aria-labelledby": "basic-button",
       }}
     >
-      <Link to = {`${routhPath.categories}?category=popular`}>
+      <Link to = {`${routhPath.categories}?category=popular`} style={{textDecoration: 'none', color: 'inherit'}}>
         <MenuItem onClick={handleClose}>Popular</MenuItem>
       </Link>
-      <Link to = {`${routhPath.categories}?category=toprated`}>
+      <Link to = {`${routhPath.categories}?category=toprated`}  style={{textDecoration: 'none', color: 'inherit'}}>
         <MenuItem onClick={handleClose}>Top Rated</MenuItem>
       </Link>
-      <Link to = {`${routhPath.categories}?category=upcoming`}>
+      <Link to = {`${routhPath.categories}?category=upcoming`}  style={{textDecoration: 'none', color: 'inherit'}}>
         <MenuItem onClick={handleClose}>Upcoming</MenuItem>
       </Link>
     </Menu>
