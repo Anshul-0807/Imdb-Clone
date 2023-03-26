@@ -1,9 +1,30 @@
-import { Box } from "@mui/material";
+import { Box , styled} from "@mui/material";
 import React from "react";
 import Header from "../components/common/Header";
 import {useState, useEffect} from 'react';
 import { categoryMovies } from "../services/api";
+import Carousel from "react-multi-carousel";
+// import styled from "@emotion/styled";
 
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+const StyledBanner = styled('img')({
+  height: 450,
+  width: '100%'
+})
 
 const CategoryMovies = () => {
  
@@ -11,7 +32,7 @@ const CategoryMovies = () => {
 
  useEffect(() => {
   const getData = async () => {
-    let response = await categoryMovies(API_URL)
+    let response = await categoryMovies()
     setMovies(response.results);
   }
   getData()
@@ -39,7 +60,7 @@ const CategoryMovies = () => {
                 key={movie.id}
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
               />
-              <Title>{movie.original_title}</Title>
+              {/* <Title>{movie.original_title}</Title> */}
             </>
           ))}
         </Carousel>
