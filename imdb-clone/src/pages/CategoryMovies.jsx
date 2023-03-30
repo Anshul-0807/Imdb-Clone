@@ -1,10 +1,12 @@
-import { Box , styled} from "@mui/material";
+import { Box , Typography, styled} from "@mui/material";
 import React from "react";
 import Header from "../components/common/Header";
 import {useState, useEffect} from 'react';
 import { useLocation } from "react-router-dom";
 import { categoryMovies } from "../services/api";
 import Carousel from "react-multi-carousel";
+import { POPULAR_API_URL, TOPRATED_API_URL,UPCOMING_API_URL, moviestype } from "../constants/constant";
+
 // import styled from "@emotion/styled";
 
 const responsive = {
@@ -27,6 +29,11 @@ const StyledBanner = styled('img')({
   width: '100%'
 })
 
+const Component = styled(Box)`
+width: 80%
+margin: auto
+`
+
 const CategoryMovies = () => {
  
  const [movies, setMovies] = useState([])
@@ -34,18 +41,29 @@ const CategoryMovies = () => {
  const {search} = useLocation();
 
  useEffect(() => {
-  const getData = async () => {
-    let response = await categoryMovies()
+  const getData = async (API_URL) => {
+    let response = await categoryMovies(API_URL)
     setMovies(response.results);
   }
-  getData()
- }, [third])
+
+  let API_URL;
+
+  if(search.includes('popular')){
+    API_URL = POPULAR_API_URL;
+  }else if(search.includes('upcoming')){
+    API_URL = UPCOMING_API_URL;
+  }else if(search.includes('toprated')){
+    API_URL= TOPRATED_API_URL;
+  }
+
+  getData(API_URL)
+ }, [search])
  
 
   return (
     <>
       <Header />
-      <Box>
+      <Component>
         <Carousel
           responsive={responsive}
           swipeable={false}
@@ -67,7 +85,11 @@ const CategoryMovies = () => {
             </>
           ))}
         </Carousel>
-      </Box>
+        <Box>
+          <Typography>IMDb Charts</Typography>
+          <Typography> IMDb {moviestype[search.split('=')[1]]} movies</Typography>
+        </Box>
+      </Component>
     </>
   );
 };
