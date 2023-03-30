@@ -30,6 +30,8 @@ const StyledBanner = styled('img')({
 const CategoryMovies = () => {
  
  const [movies, setMovies] = useState([])
+ 
+ const {search} = useLocation();
 
  useEffect(() => {
   const getData = async () => {
