@@ -14,3 +14,11 @@ export const TOPRATED_API_URL =
   "https://api.themoviedb.org/3/movie/top_rated?api_key=a91d8bc5c52c72ef13f60a9d7985c840&language=en-US";
 export const NOWPLAYING_API_URL =
   "https://api.themoviedb.org/3/movie/now_playing?api_key=a91d8bc5c52c72ef13f60a9d7985c840&language=en-US";
+
+
+
+  export const moviestype = {
+    upcoming: 'upcoming',
+    toprated: 'toprated',
+    popular: 'popular'
+  }
