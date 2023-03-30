@@ -2,6 +2,7 @@ import { Box , styled} from "@mui/material";
 import React from "react";
 import Header from "../components/common/Header";
 import {useState, useEffect} from 'react';
+import { useLocation } from "react-router-dom";
 import { categoryMovies } from "../services/api";
 import Carousel from "react-multi-carousel";
 // import styled from "@emotion/styled";
