@@ -88,6 +88,7 @@ const CategoryMovies = () => {
         <Box>
           <Typography>IMDb Charts</Typography>
           <Typography> IMDb {moviestype[search.split('=')[1]]} movies</Typography>
+          <Typography>IMDB Top {movies.length} as rated by regular IMDb voter </Typography>
         </Box>
       </Component>
     </>
