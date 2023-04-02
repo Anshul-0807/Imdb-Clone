@@ -1,4 +1,4 @@
-import { Box , Typography, styled} from "@mui/material";
+import { Box , Typography, styled, Divider} from "@mui/material";
 import React from "react";
 import Header from "../components/common/Header";
 import {useState, useEffect} from 'react';
@@ -6,8 +6,11 @@ import { useLocation } from "react-router-dom";
 import { categoryMovies } from "../services/api";
 import Carousel from "react-multi-carousel";
 import { POPULAR_API_URL, TOPRATED_API_URL,UPCOMING_API_URL, moviestype } from "../constants/constant";
+import Movieslist from "../components/Movieslist";
+
 
 // import styled from "@emotion/styled";
+
 
 const responsive = {
   desktop: {
@@ -31,8 +34,14 @@ const StyledBanner = styled('img')({
 
 const Component = styled(Box)`
 width: 80%
-margin: auto
-`
+margin: auto;
+`;
+
+const Container = styled(Box)`
+ background: #F5F5F5;
+ padding: 10px;
+
+`;
 
 const CategoryMovies = () => {
  
@@ -85,11 +94,13 @@ const CategoryMovies = () => {
             </>
           ))}
         </Carousel>
-        <Box>
-          <Typography>IMDb Charts</Typography>
-          <Typography> IMDb {moviestype[search.split('=')[1]]} movies</Typography>
-          <Typography>IMDB Top {movies.length} as rated by regular IMDb voter </Typography>
-        </Box>
+        <Container>
+          <Typography variant="h6">IMDb Charts</Typography>
+          <Typography variant="h4"> IMDb {moviestype[search.split('=')[1]]} movies</Typography>
+          <Typography>IMDB Top {movies.length} as rated by regular IMDb voter. </Typography>
+          <Divider/>
+          <Movieslist movies={movies}/>
+        </Container>
       </Component>
     </>
   );
