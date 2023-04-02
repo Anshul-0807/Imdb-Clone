@@ -97,7 +97,7 @@ const CategoryMovies = () => {
         <Container>
           <Typography variant="h6">IMDb Charts</Typography>
           <Typography variant="h4"> IMDb {moviestype[search.split('=')[1]]} movies</Typography>
-          <Typography>IMDB Top {movies.length} as rated by regular IMDb voter. </Typography>
+          <Typography style={{fontSize: 12, margin: 5 }}>IMDB Top {movies.length} as rated by regular IMDb voter. </Typography>
           <Divider/>
           <Movieslist movies={movies}/>
         </Container>
