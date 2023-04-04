@@ -1,21 +1,37 @@
-import { List, ListItem, Typography } from '@mui/material'
-import React from 'react'
+import { List, ListItem, Typography, styled } from '@mui/material'
+import React from 'react';
+import { Star } from '@mui/icons-material';
+
+
+const Banner = styled('img')({
+  width: 47
+});
+
+const Container = styled(List)`
+display : flex`
 
 const Movieslist = ({movies}) => {
   return (
    <>
     {
       movies.map(movie => (
-        <List>
+        <Container>
             <ListItem>
-              <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt='poster' />
+              <Banner src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt='poster' />
             </ListItem>
             <ListItem>
               <Typography>
-                
+                {movie.original_title}
               </Typography>
             </ListItem>
-        </List>
+            <ListItem>
+              <Star color='warning'/>
+              <Typography>{movie.vote_average}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>{movie.release_date}</Typography>
+            </ListItem>
+        </Container>
       ))
     }
    </>
